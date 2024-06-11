@@ -1,3 +1,6 @@
 my first real nodejs mvc
 
-git 14
+1- please run this command first : npm install - to install node_modules
+
+git checked
+js start 1
