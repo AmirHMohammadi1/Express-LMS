@@ -5,6 +5,8 @@ const express = require('express');
 const path = require('path');
 // express ejs layouts
 const expressLayouts = require('express-ejs-layouts')
+// use mongodb
+const mongoose = require('mongoose');
 
 
 // استفاده از express و ساخت شی از آن
@@ -14,6 +16,7 @@ const app = express();
 module.exports = class Application{
     constructor() {
         this.Serverconfig();
+        this.configDatabase();
         this.setConfig();
         this.setRouts();
     }
@@ -23,6 +26,10 @@ module.exports = class Application{
             if(err) console.log(err)
             console.log('server run on port 3000...')
         });
+    }
+
+    async configDatabase() {
+        await mongoose.connect('mongodb://127.0.0.1/nodemvc');
     }
 
     setConfig() {
