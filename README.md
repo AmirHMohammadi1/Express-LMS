@@ -4,3 +4,4 @@ my first real nodejs mvc
 
 git checked
 js start 1
+nodejs 4
