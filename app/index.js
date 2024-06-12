@@ -3,6 +3,8 @@
 const express = require('express');
 // path برای مسیریابی
 const path = require('path');
+// express ejs layouts
+const expressLayouts = require('express-ejs-layouts')
 
 
 // استفاده از express و ساخت شی از آن
@@ -13,16 +15,10 @@ module.exports = class Application{
     constructor() {
         this.Serverconfig();
         this.setConfig();
+        this.setRouts();
     }
 
     Serverconfig() {
-        app.get('/' , (req , res) => {
-            res.render('index-2')
-        });
-        app.get('/admin' , (req , res) => {
-            res.render('admin-index')
-        });
-
         app.listen(3000 , (err) => {
             if(err) console.log(err)
             console.log('server run on port 3000...')
@@ -31,9 +27,22 @@ module.exports = class Application{
 
     setConfig() {
         app.use(express.static(__dirname + '/public/web'));
-        app.use(express.static(__dirname + '/public/admin'))
+        // app.use(express.static(__dirname + '/public/admin'))
         app.set('view engine','ejs');
         app.set('views' , path.join(__dirname, 'view/web'));
-        app.set('views' , path.join(__dirname , 'view/admin'))
+        // app.set('views' , path.join(__dirname , 'view/admin'))
+        app.use(expressLayouts);
+        app.set('layout' , 'master');
+        app.set('layout extractScripts' , true);
+        app.set('layout extractStyles' , true);
+    }
+
+    setRouts() {
+        app.get('/' , (req , res) => {
+            res.render('index-2')
+        });
+        // app.get('/admin' , (req , res) => {
+        //     res.render('admin-index')
+        // });
     }
 }
