@@ -45,11 +45,6 @@ module.exports = class Application{
     }
 
     setRouts() {
-        app.get('/' , (req , res) => {
-            res.render('index-2')
-        });
-        // app.get('/admin' , (req , res) => {
-        //     res.render('admin-index')
-        // });
+        app.use(require('./control/routs'));
     }
 }
