@@ -1,14 +1,11 @@
 const router = require('express').Router();
 
+const registerControler = require('./../../http/auth/registercontroler')
 
-router.get('/register' , (req , res) => {
-    res.render('register');
-});
 
-router.post('/register' , (req , res) => {
-    // res.render('index-2')
-    res.json(req.body);
-});
+router.get('/register' , registerControler.showForm);
+
+router.post('/register' , registerControler.showForm);
 
 
 module.exports  = router;

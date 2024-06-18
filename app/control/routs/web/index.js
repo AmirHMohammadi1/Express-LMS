@@ -1,9 +1,9 @@
 const router = require('express').Router();
 
+const homeControler = require('./../../http/web/homecontroler');
 
-router.get('/' , (req , res) => {
-    res.render('index')
-});
+
+router.get('/' , homeControler.index);
 
 
 module.exports  = router;

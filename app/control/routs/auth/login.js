@@ -1,9 +1,8 @@
 const router = require('express').Router();
 
+const loginControler = require('./../../http/auth/login')
 
-router.get('/login' , (req , res) => {
-    res.render('login')
-});
+router.get('/login' , loginControler.showForm);
 
 
 module.exports  = router;
