@@ -7,6 +7,8 @@ const path = require('path');
 const expressLayouts = require('express-ejs-layouts')
 // use mongodb
 const mongoose = require('mongoose');
+// bodyParser
+const bodyParser = require('body-parser');
 
 
 // استفاده از express و ساخت شی از آن
@@ -42,6 +44,8 @@ module.exports = class Application{
         app.set('layout' , 'master');
         app.set('layout extractScripts' , true);
         app.set('layout extractStyles' , true);
+        app.use(bodyParser.urlencoded({extended : false}));
+        app.use(bodyParser.json());
     }
 
     setRouts() {

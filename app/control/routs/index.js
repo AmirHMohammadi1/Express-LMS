@@ -8,9 +8,9 @@ const loginRoutes = require('./auth/login');
 
 
 
-router.get('/' , webRouts);
-router.get('/register' , registerRoutes);
-router.get('/login' , loginRoutes);
+router.use(webRouts);
+router.use(registerRoutes);
+router.use(loginRoutes);
 
 
 module.exports  = router;
