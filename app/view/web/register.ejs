@@ -13,14 +13,24 @@
 				<div class="heading-bx left">
 					<h2 class="title-head">Sign Up <span>Now</span></h2>
 					<p>Login Your Account <a href="login">Click here</a></p>
-				</div>	
+				</div>
+				
+				<% if (messages.length > 0) { %>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<% messages.forEach(err => { %>
+							<strong><%- err %></strong><br>
+						<% }); %>
+					</div>
+				<% } %>
+				
+
 				<form class="contact-bx" action="/register" method="post">
 					<div class="row placeani">
 						<div class="col-lg-12">
 							<div class="form-group">
 								<div class="input-group">
 									<label>Your Name</label>
-									<input name="regName" type="text" required="" class="form-control">
+									<input name="regName" type="text" class="form-control">
 								</div>
 							</div>
 						</div>
@@ -28,7 +38,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<label>Your Email Address</label>
-									<input name="regEmail" type="email" required="" class="form-control">
+									<input name="regEmail" type="email" class="form-control">
 								</div>
 							</div>
 						</div>
@@ -36,7 +46,7 @@
 							<div class="form-group">
 								<div class="input-group"> 
 									<label>Your Password</label>
-									<input name="regPassword" type="password" class="form-control" required="">
+									<input name="regPassword" type="password" class="form-control">
 								</div>
 							</div>
 						</div>

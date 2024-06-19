@@ -1,11 +1,16 @@
 const router = require('express').Router();
 
-const registerControler = require('./../../http/auth/registercontroler')
+// controler
+const registerControler = require('./../../http/auth/registercontroler');
+
+
+// middleware
+const registerValidator = require('./../../validators/registervalidator')
 
 
 router.get('/register' , registerControler.showForm);
 
-router.post('/register' , registerControler.submitForm);
+router.post('/register' , registerValidator.handle() , registerControler.submitForm);
 
 
 module.exports  = router;

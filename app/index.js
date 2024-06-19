@@ -13,6 +13,8 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const mongoStore = require('connect-mongo');
 const cookieParser = require('cookie-parser');
+// flash for show error & message in form
+const flash = require('connect-flash');
 
 
 // استفاده از express و ساخت شی از آن
@@ -50,6 +52,7 @@ module.exports = class Application{
         app.set('layout extractStyles' , true);
         app.use(bodyParser.urlencoded({extended : false}));
         app.use(bodyParser.json());
+        app.use(flash());
 
         // session & cookie
         app.use(session({
