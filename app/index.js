@@ -9,6 +9,10 @@ const expressLayouts = require('express-ejs-layouts')
 const mongoose = require('mongoose');
 // bodyParser
 const bodyParser = require('body-parser');
+// session & cookies
+const session = require('express-session');
+const mongoStore = require('connect-mongo');
+const cookieParser = require('cookie-parser');
 
 
 // استفاده از express و ساخت شی از آن
@@ -46,6 +50,16 @@ module.exports = class Application{
         app.set('layout extractStyles' , true);
         app.use(bodyParser.urlencoded({extended : false}));
         app.use(bodyParser.json());
+
+        // session & cookie
+        app.use(session({
+            secret : 'secret key',
+            resave : false,
+            saveUninitialized : true,
+            store : mongoStore.create({mongoUrl : 'mongodb://127.0.0.1/nodemvc'}),
+            cookie : {secure : false}
+        }))
+        app.use(cookieParser());
     }
 
     setRouts() {

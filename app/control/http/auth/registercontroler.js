@@ -13,6 +13,7 @@ class registerControler {
         })
 
         addUser.save();
+        res.redirect('/register');
     }
 
 }
