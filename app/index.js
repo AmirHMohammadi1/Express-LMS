@@ -15,6 +15,8 @@ const mongoStore = require('connect-mongo');
 const cookieParser = require('cookie-parser');
 // flash for show error & message in form
 const flash = require('connect-flash');
+// passport
+const passport = require('passport');
 
 
 // استفاده از express و ساخت شی از آن
@@ -41,6 +43,8 @@ module.exports = class Application{
     }
 
     setConfig() {
+        // passport
+        require('./control/passport/passport-local');
         app.use(express.static(__dirname + '/public/web'));
         // app.use(express.static(__dirname + '/public/admin'))
         app.set('view engine','ejs');
@@ -63,6 +67,10 @@ module.exports = class Application{
             cookie : {secure : false}
         }))
         app.use(cookieParser());
+
+        // passport
+        app.use(passport.initialize());
+        app.use(passport.session());
     }
 
     setRouts() {
