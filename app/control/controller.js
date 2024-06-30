@@ -1,5 +1,7 @@
 const autoBind = require('auto-bind')
 const recaptcha = require('express-recaptcha').RecaptchaV2;
+const {validationResult} = require('express-validator');
+
 
 module.exports = class controller {
     constructor() {
@@ -23,5 +25,18 @@ module.exports = class controller {
                 }
             })
         })
+    }
+
+    async validationForm(req , res) {
+        const result = validationResult(req)
+        if (!result.isEmpty()) {
+            const errors = result.array();
+            const message = [];
+            errors.forEach(err => message.push(err.msg));
+            req.flash('errors' , message);
+            return false;
+        } else {
+            return true;
+        }
     }
 }
