@@ -3,10 +3,10 @@ const {check} = require('express-validator');
 class registerValidator {
     handle() {
         return[
-            check('name')
+            check('regname')
                 .isLength({min : 3})
                 .withMessage('نام کاربری باید بیشتر از 3 حرف باشد.'),
-            check('email')
+            check('regemail')
                 .isEmail()
                 .withMessage('ایمیل به درستی وارد نشده است!'),
             check('password')
