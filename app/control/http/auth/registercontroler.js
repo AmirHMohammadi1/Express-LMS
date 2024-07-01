@@ -19,7 +19,6 @@ class registerControler extends controller {
         
     }
     register(req , res , next) {
-        console.log('error 2');
         passport.authenticate('local-strategy' , {
             successRedirect : '/',
             failureRedirect : 'register',

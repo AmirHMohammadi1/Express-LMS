@@ -4,7 +4,7 @@ const express = require('express');
 // path برای مسیریابی
 const path = require('path');
 // express ejs layouts
-const expressLayouts = require('express-ejs-layouts')
+// const expressLayouts = require('express-ejs-layouts')
 // use mongodb
 const mongoose = require('mongoose');
 // bodyParser
@@ -17,6 +17,9 @@ const cookieParser = require('cookie-parser');
 const flash = require('connect-flash');
 // passport
 const passport = require('passport');
+
+// global config
+const config = require('./configs')
 
 
 // استفاده از express و ساخت شی از آن
@@ -39,32 +42,31 @@ module.exports = class Application{
     }
 
     async configDatabase() {
-        await mongoose.connect('mongodb://127.0.0.1/nodemvc');
+        await mongoose.connect(config.database.DARABASE_URL);
     }
 
     setConfig() {
         // passport
         require('./control/passport/passport-local');
-        app.use(express.static(__dirname + '/public/web'));
-        // app.use(express.static(__dirname + '/public/admin'))
-        app.set('view engine','ejs');
-        app.set('views' , path.join(__dirname, 'view/web'));
-        // app.set('views' , path.join(__dirname , 'view/admin'))
-        app.use(expressLayouts);
-        app.set('layout' , 'master');
-        app.set('layout extractScripts' , true);
-        app.set('layout extractStyles' , true);
+
+        app.use(express.static(__dirname + config.layout.PUBLIC_DIR));
+        app.set('view engine', config.layout.VIEW_ENGINE);
+        app.set('views' , path.join(__dirname, config.layout.VIEW_DIR));
+        app.use(config.layout.EJS.expressLayouts);
+        app.set('layout' , config.layout.EJS.layout);
+        app.set('layout extractScripts' , config.layout.EJS.EXTRCTSCRIPT);
+        app.set('layout extractStyles' , config.layout.EJS.EXTRCTSTYLE);
         app.use(bodyParser.urlencoded({extended : false}));
         app.use(bodyParser.json());
         app.use(flash());
 
         // session & cookie
         app.use(session({
-            secret : 'secret key',
-            resave : false,
-            saveUninitialized : true,
-            store : mongoStore.create({mongoUrl : 'mongodb://127.0.0.1/nodemvc'}),
-            cookie : {secure : false}
+            secret : config.session.SECRET,
+            resave : config.session.RESAVE,
+            saveUninitialized : config.session.SAVEUNINITIALIZED,
+            store : mongoStore.create({mongoUrl : config.session.STORE}),
+            cookie : {secure : config.session.COOKIE_SECURE}
         }))
         app.use(cookieParser());
 

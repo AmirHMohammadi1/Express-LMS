@@ -1,6 +1,7 @@
 const autoBind = require('auto-bind')
 const recaptcha = require('express-recaptcha').RecaptchaV2;
 const {validationResult} = require('express-validator');
+const config = require('./../configs')
 
 
 module.exports = class controller {
@@ -11,7 +12,7 @@ module.exports = class controller {
 
     // recaptcha in email a.h.mohamamdi5@gmail.com
     setRecaptcha() {
-        this.recaptcha = new recaptcha('6LfDjf0pAAAAALlzPfqo6cr_jiqglqeqjoNSB3gC' , '6LfDjf0pAAAAAOn6Vw-VoKnBAHWTL4VQzpBtdq3M' , {hl : 'fa'})
+        this.recaptcha = new recaptcha(config.services.Recaptcha.SITE_KEY , config.services.Recaptcha.SECRET_KEY , {hl : config.services.Recaptcha.OPTION})
     }
 
     validationRecaptcha(req , res) {
