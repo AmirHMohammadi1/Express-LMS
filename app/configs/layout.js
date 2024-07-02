@@ -1,7 +1,7 @@
 const expressLayouts = require('express-ejs-layouts');
 
 module.exports = {
-    PUBLIC_DIR : '/public/web',
+    PUBLIC_DIR : process.env.PUBLIC_DIR,
     VIEW_ENGINE : 'ejs',
     VIEW_DIR : 'view/web',
     EJS : {
@@ -11,3 +11,4 @@ module.exports = {
         EXTRCTSTYLE : true
     }
 }
+// console.log(process.env.PUBLIC_DIR);
