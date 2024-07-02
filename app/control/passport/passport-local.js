@@ -34,3 +34,17 @@ passport.use('local-strategy' , new LocalStrategy({
 
         })
 }));
+
+passport.use('login-strategy' , new LocalStrategy({
+    usernameField : 'logemail',
+    passportField : 'password',
+    passReqToCallback : true
+} , async (req , email , password , done) => {
+        userModel.findOne({'email' : email})
+        .then((user , err) => {
+            if (err) return done(err);
+            if (!user) return done(err , false , req.flash('errors' , 'این کاربر قبلا ثبت نام نکرده است'));
+            if (user.password != password) return done(err , false , req.flash('errors' , 'رمز عبور صحیح نیست!'))
+            done(null ,user)
+        })
+}));

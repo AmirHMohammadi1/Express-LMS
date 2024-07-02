@@ -40,4 +40,8 @@ module.exports = class controller {
             return true;
         }
     }
+    // ? for return to this url or home url
+    back (req , res) {
+        res.redirect(req.header('referer') || '/')
+    }
 }

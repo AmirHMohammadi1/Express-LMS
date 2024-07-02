@@ -3,8 +3,8 @@ const router = require('express').Router();
 
 // required
 const webRouts = require('./web');
-const registerRoutes = require('./auth/register');
-const loginRoutes = require('./auth/login');
+const registerRoutes = require('./auth/registerrouter');
+const loginRoutes = require('./auth/loginrouter');
 
 
 
