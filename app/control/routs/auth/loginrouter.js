@@ -4,7 +4,7 @@ const router = require('express').Router();
 const loginControler = require('../../http/auth/logincontroler')
 
 // middleware
-const loginValidator = require('../../validators/registervalidator')
+const loginValidator = require('../../validators/loginvalidator')
 
 router.get('/login' , loginControler.showForm);
 

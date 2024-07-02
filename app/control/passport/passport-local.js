@@ -44,7 +44,7 @@ passport.use('login-strategy' , new LocalStrategy({
         .then((user , err) => {
             if (err) return done(err);
             if (!user) return done(err , false , req.flash('errors' , 'این کاربر قبلا ثبت نام نکرده است'));
-            if (user.password != password) return done(err , false , req.flash('errors' , 'رمز عبور صحیح نیست!'))
+            if (!user.comparePassword(password)) return done(err , false , req.flash('errors' , 'رمز عبور صحیح نیست!'))
             done(null ,user)
         })
 }));

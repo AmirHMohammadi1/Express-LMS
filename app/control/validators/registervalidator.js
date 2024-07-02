@@ -16,18 +16,5 @@ class registerValidator {
     }
 }
 
-class loginValidator {
-    handle() {
-        return[
-            check('logemail')
-                .isEmail()
-                .withMessage('ایمیل به درستی وارد نشده است!'),
-            check('password')
-                .isLength({min : 5})
-                .withMessage('رمز عبور باید بیشتر از 5 کاراکتر باشد.')
-        ]
-    }
-}
 
 module.exports = new registerValidator();
-module.exports = new loginValidator();
