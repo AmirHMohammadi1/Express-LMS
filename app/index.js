@@ -20,6 +20,8 @@ const passport = require('passport');
 
 // global config
 const config = require('./configs')
+// middleware
+const rememberLogin = require('./control/middleware/rememberLogin')
 
 
 // استفاده از express و ساخت شی از آن
@@ -68,11 +70,14 @@ module.exports = class Application{
             store : mongoStore.create({mongoUrl : config.session.STORE}),
             cookie : {secure : config.session.COOKIE_SECURE}
         }))
-        app.use(cookieParser());
+        app.use(cookieParser("secret"));
 
         // passport
         app.use(passport.initialize());
         app.use(passport.session());
+
+        // middleware
+        app.use(rememberLogin.handle)
     }
 
     setRouts() {

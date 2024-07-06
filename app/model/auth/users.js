@@ -1,10 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
+const uniqueString = require('unique-string')
+// import { uniqueString } from "unique-string";
 
 const user = mongoose.Schema({
     name : {type : String , require : true},
     email : {type : String , require : true},
     password : {type : String , require : true},
+    rememberToken : {type : String , default : ''}
 } , {
     timestamps : true
 })
@@ -18,6 +21,15 @@ user.pre('save' , function (next) {
 
 user.methods.comparePassword = function(password) {
     return bcrypt.compareSync(password , this.password)
+}
+
+user.methods.setRememberToken = function(res) {
+    const token = uniqueString();
+    res.cookie('remember_token' , token , {maxAge : 1000 * 60 * 60 * 24 * 6 , httpOnly : true , signed : true})
+    this.updateOne({rememberToken : token})
+    .then((ok , err) => {
+        if (err) console.log(err)
+    })
 }
 
 module.exports = mongoose.model('users' , user);

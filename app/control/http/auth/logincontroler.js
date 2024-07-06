@@ -24,10 +24,10 @@ class loginControler extends controller{
                 if (err) console.log(err)
                 // console.log(user)
                 // console.log('++++++++++++++')
-                // console.log(req.body)
-                // if (req.body.remember) {
-                //     user.setRememberToken(res)
-                // }
+                // console.log(req.body.remember)
+                if (req.body.remember) {
+                    user.setRememberToken(res)
+                }
                 res.redirect('/')
             }) 
         })(req , res , next)
