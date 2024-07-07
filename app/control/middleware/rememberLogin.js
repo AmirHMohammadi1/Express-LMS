@@ -1,6 +1,7 @@
 const user = require('./../../model/auth/users')
+const middleware = require('./middleware')
 
-class rememberLogin {
+class rememberLogin extends middleware {
     handle(req , res , next){
         if (!req.isAuthenticated()) {
             const rememberToken = req.signedCookies.remember_token;
@@ -8,35 +9,35 @@ class rememberLogin {
             // console.log("====================")
             // console.log(req)
             if (rememberToken) {
-                // this.userFind(rememberToken , req , next)
-                user.findOne({rememberToken})
-                .then(user => {
-                    if (user) {
-                        // console.log(user)
-                        req.login(user , err => {
-                            if (err) console.log(err)
-                        })
-                    }else {
-                        next()
-                    }
-                })
+                this.userFind(rememberToken , req , next)
+                // user.findOne({rememberToken})
+                // .then(user => {
+                //     if (user) {
+                //         // console.log(user)
+                //         req.login(user , err => {
+                //             if (err) console.log(err)
+                //         })
+                //     }else {
+                //         next()
+                //     }
+                // })
             }
         }
         next()
     }
 
-    // userFind(rememberToken , req , next) {
-    //     user.findOne({rememberToken})
-    //     .then(user => {
-    //         if (user) {
-    //             req.login(user , err => {
-    //                 if (err) console.log(err)
-    //             })
-    //         }else {
-    //             next()
-    //         }
-    //     })
-    // }
+    userFind(rememberToken , req , next) {
+        user.findOne({rememberToken})
+        .then(user => {
+            if (user) {
+                req.login(user , err => {
+                    if (err) console.log(err)
+                })
+            }else {
+                next()
+            }
+        })
+    }
 }
 
 module.exports = new rememberLogin
