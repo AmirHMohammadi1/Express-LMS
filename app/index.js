@@ -21,7 +21,8 @@ const passport = require('passport');
 // global config
 const config = require('./configs')
 // middleware
-const rememberLogin = require('./control/middleware/rememberLogin')
+const rememberLogin = require('./control/middleware/rememberLogin');
+const { check } = require('express-validator');
 
 
 // استفاده از express و ساخت شی از آن
@@ -78,6 +79,17 @@ module.exports = class Application{
 
         // middleware
         app.use(rememberLogin.handle)
+
+        // use isAuthenticated in view
+        app.use((req , res , next) => {
+            app.locals = {
+                auth : {
+                    check : req.isAuthenticated(),
+                    user : req.user
+                }
+            }
+            next()
+        })
     }
 
     setRouts() {
