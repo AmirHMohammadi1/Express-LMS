@@ -13,7 +13,7 @@ class rememberLogin extends middleware {
                 // user.findOne({rememberToken})
                 // .then(user => {
                 //     if (user) {
-                //         // console.log(user)
+                        // console.log(user)
                 //         req.login(user , err => {
                 //             if (err) console.log(err)
                 //         })
