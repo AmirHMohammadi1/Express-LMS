@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const uniqueString = require('unique-string')
-// import { uniqueString } from "unique-string";
 
 const user = mongoose.Schema({
     name : {type : String , require : true},
@@ -16,6 +15,13 @@ user.pre('save' , function (next) {
     const salt = bcrypt.genSaltSync(15);
     const hash = bcrypt.hashSync(this.password, salt);
     this.password = hash;
+    next();
+})
+
+user.pre('findOneAndUpdate' , function (next) {
+    const salt = bcrypt.genSaltSync(15);
+    const hash = bcrypt.hashSync(this.getUpdate().$set.password, salt);
+    this.getUpdate().$set.password = hash;
     next();
 })
 
