@@ -22,7 +22,7 @@ const passport = require('passport');
 const config = require('./configs')
 // middleware
 const rememberLogin = require('./control/middleware/rememberLogin');
-const { check } = require('express-validator');
+// const { check } = require('express-validator');
 
 
 // استفاده از express و ساخت شی از آن

@@ -7,7 +7,7 @@ const unicString = require('unique-string');
 class forgetPassControler extends controller{
 
     showForm(req , res) {
-        res.render('forget-password' , {messages : req.flash('errors') , success : req.flash('success')});
+        res.render('web/forget-password' , {messages : req.flash('errors') , success : req.flash('success')});
     }
 
     async submitForm(req , res ,next) {

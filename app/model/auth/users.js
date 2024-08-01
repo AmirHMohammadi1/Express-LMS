@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const uniqueString = require('unique-string')
 
 const user = mongoose.Schema({
+    admin : {type : Boolean , default : false},
     name : {type : String , require : true},
     email : {type : String , require : true},
     password : {type : String , require : true},

@@ -6,7 +6,7 @@ const User = require('./../../../model/auth/users')
 class resetPassControler extends controller {
     showForm(req , res) {
         // console.log(req.path)
-        res.render('resetpassword' , {messages : req.flash('errors') , success : req.flash('success')});
+        res.render('web/resetpassword' , {messages : req.flash('errors') , success : req.flash('success')});
     }
 
     async submitForm(req , res , next) {
@@ -26,7 +26,7 @@ class resetPassControler extends controller {
     }
 
     async resetPassProcess(req , res , next){
-        console.log(req)
+        // console.log(req)
         const pathToken = req.rawHeaders[19]
         const charDot = pathToken.lastIndexOf(':')
         const urlToken = pathToken.slice(charDot+1)

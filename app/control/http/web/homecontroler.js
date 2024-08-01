@@ -1,6 +1,6 @@
 class homeControler {
     index(req , res) {
-        res.render('index');
+        res.render('web/index');
     }
 }
 module.exports = new homeControler;

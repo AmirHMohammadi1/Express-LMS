@@ -4,7 +4,7 @@ const passport = require('passport');
 
 class loginControler extends controller{
     showForm(req , res) {
-        res.render('login' , {messages : req.flash('errors')});
+        res.render('web/login' , {messages : req.flash('errors')});
     }
 
     async submitForm(req , res ,next) {
