@@ -4,11 +4,15 @@ const router = require('express').Router();
 // required
 const webRouts = require('./web');
 const authRoutes = require('./auth');
-const adminRouts = require('./admin')
+const adminRouts = require('./admin');
 
 // middleware
 const redirectAuthenticated = require('./../middleware/redirectAuthenticated')
 const redirectAdmin = require('./../middleware/redirectAdmin')
+
+
+// admin
+router.use('/admin' , redirectAdmin.handle , adminRouts)
 
 // logout
 router.get('/logout' , (req , res) => {
@@ -23,8 +27,7 @@ router.get('/logout' , (req , res) => {
 router.use('/' , webRouts);
 router.use(redirectAuthenticated.handle , authRoutes);
 
-// admin
-router.use('/admin' , redirectAdmin.handle , adminRouts)
+
 
 
 

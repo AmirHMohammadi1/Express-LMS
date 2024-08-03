@@ -40,7 +40,7 @@
 	cursor: pointer;
 	color: #FFF;
 	background-color: rgba(255,255,255,0.1);
-	float: left;
+	float: right;
 }
 .ttr-toggle-sidebar i{
 	position: absolute;
@@ -399,7 +399,7 @@
 	color: var(--primary);
 }
 .ttr-opened-sidebar .ttr-sidebar{
-	left: 0;
+	right: 0;
 }
 .ttr-sidebar-wrapper{
 	position: absolute;
@@ -500,6 +500,7 @@
 }
 .ttr-sidebar-navi a > span{
 	display: table-cell; 
+	text-align: right;
 }
 
 .ttr-sidebar-navi a > span.ttr-icon{
@@ -575,7 +576,7 @@
 }
 
 .ttr-pinned-sidebar.ttr-opened-sidebar .ttr-wrapper{
-	margin-left: 300px;
+	margin-right: 300px;
 }
 .ttr-pinned-sidebar .ttr-wrapper{
 	margin-left: 0;
