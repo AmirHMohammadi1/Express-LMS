@@ -211,11 +211,11 @@
 	margin-right:10px;
 }
 .topbar-right ul li{
-	padding-left:10px;
-	margin-left:10px;
+	padding-right: 10px;
+  	margin-right: 10px;
 }
 .topbar-left ul li i{
-	margin-right:5px;	
+	margin-left:5px;	
 }
 .search-btn:after,
 .topbar-left ul li:after,
@@ -230,8 +230,8 @@
     opacity: 0.1;
 }
 .topbar-right ul li:after{
-	right:auto;
-	left:0;
+	left: auto;
+	right: 0;
 }
 .topbar-right ul li:first-child:after,
 .topbar-left ul li:last-child:after{
@@ -2075,12 +2075,12 @@ button.back-to-top {
 .courses-carousel .owl-nav{
 	position: absolute;
     top: -70px;
-    right: 10px;
+    left: 10px;
 }
 .testimonial-carousel .owl-nav{
 	position: absolute;
     top: -80px;
-    right: -5px;
+    left: -5px;
 }
 .recent-news-carousel .owl-nav{
 	position: absolute;
@@ -2158,8 +2158,8 @@ button.back-to-top {
 	margin-bottom: 10px;
     margin-top: 0;
     line-height: 32px;
-    padding-left: 10px;
-    border-left: 5px solid var(--primary);
+    padding-right: 10px;
+  	border-right: 5px solid var(--primary);
 }
 .heading-bx.left p{
 	max-width:500px;
@@ -2277,10 +2277,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e14', end
 /* Testimonials */
 .testimonial-bx{
 	background-color: #fff;
-	padding: 20px 20px 20px 70px;
-	border-radius: 5px;
-	margin-left: 30px;
-	border: 1px solid #F0F0F0;
+  	padding: 20px 70px 20px 20px;
+  	border-radius: 5px;
+  	margin-right: 30px;
+  	border: 1px solid #F0F0F0;
 }
 .testimonial-bx .testimonial-content p,
 .testimonial-bx .testimonial-info p{
@@ -2299,7 +2299,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e14', end
     font-family: fontawesome;
     font-size: 50px;
     color:#d6d6d6;
-    right: 30px;
+    left: 30px;
     top: 10px;
 	z-index: 9;
 }
@@ -2310,7 +2310,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff5e14', end
     border: 3px solid #fff;
     box-shadow: 0 0 8px 5px rgba(0,0,0,0.1);
     position: absolute;
-    left: 0;
+    right: 0;
 	z-index: 9;
 }
 .testimonial-bx .testimonial-content p{

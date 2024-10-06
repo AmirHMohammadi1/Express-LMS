@@ -16,6 +16,7 @@
 						<div class="wc-title">
 							<h4>Your Courses</h4>
 						</div>
+                        
 						<div class="widget-inner">
 							<div class="card-courses-list admin-courses">
 								<div class="card-courses-media">
@@ -73,44 +74,165 @@
 								</div>
 							</div>
 
+                            <% if (messages.length > 0) { %>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <% messages.forEach(err => { %>
+                                        <strong><%- err %></strong><br>
+                                    <% }); %>
+                                </div>
+                            <% } %>
+
                             <form class="contact-bx" method="post" action="courseStore">
                                 <div class="row placeani">
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <label>Your Email</label>
-                                                <input name="logemail" type="email" class="form-control">
+                                                <label>course name</label>
+                                                <input name="title" type="text" class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <div class="input-group"> 
-                                                <label>Your Password</label>
-                                                <input name="password" type="password" class="form-control">
+                                                <label>image</label>
+                                                <input name="image" type="file" class="form-control">
                                             </div>
                                         </div>
                                     </div>
-                                    <%- // recaptcha %>
-                                    <div class="col-lg-12">
-                                        <div class="form-group form-forget">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" name="remember" class="custom-control-input" id="customControlAutosizing">
-                                                <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>descreiption</label>
+                                                <input name="description" type="text" class="form-control">
                                             </div>
-                                            <a href="forgetpass" class="ml-auto">Forgot Password?</a>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 m-b30">
-                                        <button name="submit" type="submit" value="Submit" class="btn button-md">Login</button>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <h6>Login with Social media</h6>
-                                        <div class="d-flex">
-                                            <a class="btn flex-fill m-r5 facebook" href="#"><i class="fa fa-facebook"></i>Facebook</a>
-                                            <a class="btn flex-fill m-l5 google" href="/google"><i class="fa fa-google"></i>Google</a>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>explain</label>
+                                                <textarea name="body" class="form-control"></textarea>
+                                            </div>
                                         </div>
                                     </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>date</label>
+                                                <input name="date" type="date" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>part numbers</label>
+                                                <input name="part" type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>project</label>
+                                                <input name="project" type="checkbox" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>project time</label>
+                                                <input name="time" type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>level</label>
+                                                <input name="level" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>programming languages</label>
+                                                <input name="languages" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>support</label>
+                                                <input name="support" type="checkbox" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>size of course</label>
+                                                <input name="size" type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>receipt</label>
+                                                <input name="receipt" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>progress</label>
+                                                <input name="progress" type="number" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>techer</label>
+                                                <input name="techer" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>type of course</label>
+                                                <input name="typeOfCourse" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>group</label>
+                                                <input name="group" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>tags</label>
+                                                <input name="tags" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+									
+									<div class="col-lg-12 m-b30">
+										<button name="submit" type="submit" value="Submit" class="btn button-md">Login</button>
+									</div>
+                                    
                                 </div>
                             </form>
 						</div>

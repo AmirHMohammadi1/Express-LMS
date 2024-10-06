@@ -16,6 +16,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	scroll-behavior: smooth;
 	direction: rtl;
+	text-align: right;
 }
 a { color: #6f6f6f; outline: 0 none; text-decoration: none; }
 a:hover, a:focus { text-decoration: none; outline: 0 none; }

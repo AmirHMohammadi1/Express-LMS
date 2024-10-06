@@ -2408,11 +2408,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#391800', end
 	-webkit-transition:all 0.5s;
 	-ms-transition:all 0.5s;
 	-o-transition:all 0.5s;
+	text-align: right;
 }
 .courses-search-bx .focused .input-group label,
 .contact-bx .focused .input-group label{
-	top: -8px;
-	font-size: 10px;
+	top: -20px;
+	font-size: 16px;
 	color:var(--primary);
 }
 .contact-bx .input-group textarea.form-control{
